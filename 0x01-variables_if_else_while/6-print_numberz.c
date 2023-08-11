@@ -3,8 +3,10 @@
 /**
  * main - Entry point
  *
- * Description: Prints all single digit numbers of base 10,
- *              starting from 0, followed by a new line.
+ * Description: Prints all single 
+ * digit numbers of base 10
+ * starting from 0,
+ * followed by a new line.
  *
  * Return: Always 0 (Success)
  */
@@ -17,7 +19,6 @@ int main(void)
 		putchar(digit + '0'); /* Adding '0' converts the digit to its ASCII character representation */
 		digit++;
 	}
-
 	putchar('\n');
 
 	return (0);
