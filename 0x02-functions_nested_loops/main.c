@@ -7,6 +7,7 @@
  */
 int main(void)
 {
+	/*Task 1*/
 	/* Call the function to print the alphabet */
 	print_alphabet();
 
