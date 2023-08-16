@@ -12,5 +12,5 @@ void print_alphabet(void)
 		_putchar(letter);
 		letter++;
 	}
-	_putchar('\n'); // Add a new line after printing the alphabet
+	_putchar('\n'); /* Add a new line after printing the alphabet */
 }
