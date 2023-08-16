@@ -1,6 +1,10 @@
 #include "main.h"
-#include "3-islower.h"
 
+/*
+ * main -Entry point
+ *
+ * Return: Always 0(success)
+ */
 int main(void)
 {
 	/*Task 3: islower*/
@@ -9,3 +13,6 @@ int main(void)
 	result_islower = _islower(c_islower);
 	_putchar(result_islower + '0');
 	_putchar('\n');
+
+	return (0);
+}
