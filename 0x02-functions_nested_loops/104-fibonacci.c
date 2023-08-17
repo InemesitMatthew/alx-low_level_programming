@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	print_fibonnacciTwo();
+	print_fibonnacci();
 
 	return (0);
 }
@@ -18,7 +18,7 @@ int main(void)
  *
  * Return: void
  */
-void print_fibonnacciTwo(void)
+void print_fibonnacci(void)
 {
 	unsigned long int a = 1, b = 2, c, i;
 
