@@ -1,34 +1,52 @@
 #include "main.h"
-#include <stdio.h>
-
+#include "unistd.h"
 /**
- * print_times_table - Prints the n times table, starting with 0.
- * @n: The number to print the times table for.
+ * print_times_table - prints the n times table, starting with 0
+ *
+ * @n: this is the times table value limit
+ *
+ * Retun: void
  */
 void print_times_table(int n)
 {
+	int multiplicand, multiplier, product;
+
 	if (n >= 0 && n <= 15)
 	{
-		int i, j, result;
-
-		for (i = 0; i <= n; i++)
+		multiplicand = 0;
+		while (multiplicand <= n)
 		{
-			for (j = 0; j <= n; j++)
+			multiplier = 0;
+			while (multiplier <= n)
 			{
-				result = i * j;
-
-				if (j != 0)
+				product = multiplicand * multiplier;
+				if (multiplier != 0)
 				{
-					printf(",  ");
-					if (result < 10)
-						printf("  ");
-					else if (result < 100)
-						printf(" ");
+					write(1, ", ", 2);
+					if (product < 10)
+						write(1, "  ", 2);
+					else if (product < 100)
+						_putchar(' ');
 				}
-
-				printf("%d", result);
+				if (product >= 10 && product <= 99)
+				{
+					_putchar((product / 10) +
+						 '0'); /* Tens digit */
+					_putchar((product % 10) +
+						 '0'); /* Unit digit */
+				}
+				else if (product >= 100 && product <= 999)
+				{
+					_putchar((product / 100) + '0');
+					_putchar((product / 10) % 10 + '0');
+					_putchar((product % 10) + '0');
+				}
+				else
+					_putchar(product + '0');
+				multiplier++;
 			}
-			printf("\n");
+			_putchar('\n');
+			multiplicand++;
 		}
 	}
 }
