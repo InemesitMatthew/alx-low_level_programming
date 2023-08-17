@@ -1,12 +1,13 @@
-#include "main.h" 
-/** Include the header file that contains 
-* the function prototype
+#include "main.h"
+
+/**
+* main - Entry point, tests the positive_or_negative() function with
+* input value 0
 *
-* main - tests the positive_or_negative() function with input value 0
-* Return: 0
+* Return: Always 0 (Success)
 */
 int main(void)
-{ 
+{
 	int i;
 
 	i = 0; /* set the input value to 0*/
