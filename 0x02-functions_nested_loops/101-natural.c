@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * main - Entry Point
+ * main - Entry point
  *
  * Description: Computes and prints the sum of all multiples of 3 or 5
  * below 1024 (excluded).
@@ -11,7 +11,7 @@
  */
 int main(void)
 {
-	int 1, sum = 0;
+	int i, sum = 0;
 
 	for (i = 0; i < 1024; i++)
 	{
@@ -25,3 +25,8 @@ int main(void)
 
 	return (0);
 }
+
+
+
+
+
