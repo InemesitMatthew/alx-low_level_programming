@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
  * main - Entry point of the program.
  *
@@ -10,18 +9,21 @@
  */
 int main(void)
 {
-	print_fibonacci();
+	print_fibonnacciTwo();
 
 	return (0);
 }
-void print_fibonacci(void)
+/**
+ * print_fibonnacciTwo - print the Fibonacci value of range 98
+ *
+ * Return: void
+ */
+void print_fibonnacciTwo(void)
 {
-
 	unsigned long int a = 1, b = 2, c, i;
 
 	printf("%lu, %lu", a, b);
-
-	for (i = 2; i < 98; i++)
+	for (i = 1; i < 98; i++)
 	{
 		c = a + b;
 		printf(", %lu", c);
