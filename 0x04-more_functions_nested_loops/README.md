@@ -1,4 +1,4 @@
-##Task 0: isupper
+**Task 0: isupper**
 
 **Purpose of the Task:**
 The purpose of this task is to write a function named `_isupper` that checks whether a given character is an uppercase character or not.
@@ -57,7 +57,7 @@ Here's how you can approach this task:
 
 ---
 
-##Task 1: isdigit
+**Task 1: isdigit**
 
 **Purpose of the Task:**
 In this task, you're required to create a function named `_isdigit` that checks if a given character is a digit (0 through 9). You'll implement this function and test it using a provided `main` function that checks whether specific characters are digits or not.
@@ -143,7 +143,7 @@ The code needs to be compiled and executed to test its functionality. The compil
 Remember that the `_isdigit` function you're creating here is similar to the standard library function `isdigit`. This task is a simple demonstration of how functions can be used to check specific conditions in programming.
 
 ---
-##Task 2: Collaboration is multiplication
+**Task 2: Collaboration is multiplication**
 
 To create this code, you're going to make a function that acts like a multiplication machine for two numbers. It takes in two numbers (let's call them "a" and "b"), and it gives back their product, which is the result of multiplying them together.
 
@@ -383,5 +383,441 @@ This will produce the following output:
 ```
 
 The `print_most_numbers` function uses a loop to iterate through numbers from 0 to 9. It checks if the current number is not equal to 2 or 4. If it's not 2 or 4, it uses the `_putchar` function to print the number as a character. After the loop, the function prints a newline character to move to the next line.
+
+---
+
+**Task 5: Numbers constitute the only universal language**
+
+In this task, we're going to write a program that prints numbers from 0 to 14, but we'll do it 10 times! So, it's like printing a set of numbers multiple times.
+
+**Code Explanation:**
+
+1. We start by including a special file called "main.h." Just like before, this file helps our program understand important things.
+
+2. We create a new function called `more_numbers`. This function is going to help us print numbers in a special way.
+
+3. Inside the `more_numbers` function, we use two loops. Yes, two loops! They're like two little machines working together.
+
+4. The first loop will run 10 times because we want to print the numbers 10 times.
+
+5. Inside the first loop, we have another loop. This second loop will go through numbers from 0 to 14. It's like a little counter.
+
+6. For each number, we check if it's bigger than 9. If it is, we need to print two separate digits. We divide the number by 10 to get the first digit and use `_putchar` to print it. Then, we use the remainder when dividing by 10 to get the second digit and print that too.
+
+7. If the number is not bigger than 9, we can just print it using `_putchar`.
+
+8. After the second loop finishes, we use `_putchar` to print a special character called "newline." This moves the printing to a new line, like when you press "Enter" on the keyboard.
+
+9. The first loop repeats this process 10 times, so we end up printing the numbers from 0 to 14, ten times in a row.
+
+**Why It's Cool:**
+
+This program is cool because it shows how we can use two loops to create a pattern of numbers. By using `_putchar`, we can print individual digits and even make them look neat. It's like making a special number pattern!
+
+Just imagine you have a robot that writes down numbers neatly in rows, and you're telling it to write the same numbers ten times in a row. That's what this program does with code!
+
+
+**5-more_numbers.c:**
+```c
+#include "main.h"
+
+/**
+ * more_numbers - prints 10 sets of numbers from 0 to 14
+ */
+void more_numbers(void)
+{
+    int i, j;
+
+    for (i = 0; i < 10; i++) // Loop to repeat 10 times
+    {
+        for (j = 0; j <= 14; j++) // Loop to print numbers from 0 to 14
+        {
+            if (j > 9) // If the number is greater than 9, print two digits
+            {
+                _putchar('0' + j / 10); // Print the first digit
+                _putchar('0' + j % 10); // Print the second digit
+            }
+            else
+            {
+                _putchar('0' + j); // Print the single digit number
+            }
+        }
+        _putchar('\n'); // Move to a new line after each set of numbers
+    }
+}
+```
+
+**5-main.c:**
+```c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ * Return: Always 0.
+ */
+int main(void)
+{
+    more_numbers();
+    return (0);
+}
+```
+
+To compile and run the code, you can use the provided compilation commands:
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 5-main.c 5-more_numbers.c -o 5-more_numbers
+./5-more_numbers
+```
+
+This will produce the following output:
+```
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+01234567891011121314
+```
+
+The `more_numbers` function uses two nested loops to print the numbers in the required pattern. It prints each digit one by one using `_putchar`, and after each set of numbers, it moves to a new line.
+
+---
+
+**Task 6: The shortest distance between two points is a straight line**
+
+In this task, we're asked to write a function called `print_line` that takes an integer `n` as its parameter. This `n` represents the number of times the character `_` should be printed in a line. The goal is to print this line of underscores, and if `n` is 0 or less, then we should only print a newline.
+
+Let's break down the code for the `print_line` function step by step:
+
+```c
+void print_line(int n)
+{
+    if (n <= 0) // If n is 0 or less, only print a newline
+    {
+        _putchar('\n'); // Print a newline character
+    }
+    else
+    {
+        int i;
+
+        for (i = 0; i < n; i++) // Loop to print n underscores
+        {
+            _putchar('_'); // Print an underscore character
+        }
+
+        _putchar('\n'); // Move to a new line after printing the line
+    }
+}
+```
+
+1. The function starts by checking if `n` is 0 or less. If it is, it means we should print just a newline character to represent an empty line.
+
+2. If `n` is greater than 0, we enter the `else` block. Here, a loop runs `n` times, and in each iteration, an underscore character (`_`) is printed using the `_putchar` function.
+
+3. After printing the specified number of underscores, the function prints a newline character using `_putchar('\n')` to move to a new line.
+
+The provided `main` function demonstrates how to use the `print_line` function with different values of `n`. When compiled and run, it prints the requested lines of underscores, followed by a newline character.
+
+Remember that the `_putchar` function is provided and prints a single character to the standard output.
+
+
+**6-print_line.c:**
+```c
+#include "main.h"
+
+/**
+ * print_line - prints a straight line of underscores
+ * @n: the number of times the character _ should be printed
+ */
+void print_line(int n)
+{
+    if (n <= 0) // If n is 0 or less, only print a newline
+    {
+        _putchar('\n');
+    }
+    else
+    {
+        int i;
+
+        for (i = 0; i < n; i++) // Loop to print n underscores
+        {
+            _putchar('_');
+        }
+        _putchar('\n'); // Move to a new line after printing the line
+    }
+}
+```
+
+**6-main.c:**
+```c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_line(0);
+    print_line(2);
+    print_line(10);
+    print_line(-4);
+    return (0);
+}
+```
+
+To compile and run the code, you can use the provided compilation commands:
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 6-main.c 6-print_line.c -o 6-lines
+./6-lines
+```
+
+This will produce the following output:
+```
+$
+__$
+__________$
+$
+```
+
+The `print_line` function prints a line of underscores using the `_putchar` function. It first checks if `n` is 0 or less, and in that case, it only prints a newline. Otherwise, it uses a loop to print `n` underscores, followed by a newline.
+
+---
+
+**Task 7:  I feel like I am diagonally parked in a parallel universe**
+
+
+In this task, we're asked to write a function called `print_diagonal` that takes an integer `n` as its parameter. This `n` represents the number of times the character `\` should be printed diagonally. The goal is to print this diagonal line of backslashes, and if `n` is 0 or less, then we should only print a newline.
+
+Let's break down the code for the `print_diagonal` function step by step:
+
+```c
+void print_diagonal(int n)
+{
+    if (n <= 0) // If n is 0 or less, only print a newline
+    {
+        _putchar('\n'); // Print a newline character
+    }
+    else
+    {
+        int i, j;
+
+        for (i = 0; i < n; i++) // Loop to print n lines
+        {
+            for (j = 0; j < i; j++) // Loop to print leading spaces
+            {
+                _putchar(' '); // Print a space character
+            }
+            _putchar('\\'); // Print a backslash character
+            _putchar('\n'); // Move to a new line
+        }
+    }
+}
+```
+
+1. The function starts by checking if `n` is 0 or less. If it is, it means we should print just a newline character to represent an empty line.
+
+2. If `n` is greater than 0, we enter the `else` block. Here, an outer loop runs `n` times to print `n` diagonal lines.
+
+3. Inside the outer loop, an inner loop runs `i` times (where `i` is the current value of the outer loop variable). This inner loop is responsible for printing leading spaces to create the diagonal effect.
+
+4. After printing the leading spaces, the function prints a backslash character (`\`) to represent the diagonal line, followed by a newline character to move to the next line.
+
+The provided `main` function demonstrates how to use the `print_diagonal` function with different values of `n`. When compiled and run, it prints the requested diagonal lines of backslashes, followed by newline characters.
+
+Remember that the `_putchar` function is provided and prints a single character to the standard output.
+
+
+**7-print_diagonal.c:**
+```c
+#include "main.h"
+
+/**
+ * print_diagonal - draws a diagonal line in the terminal
+ * @n: the number of times the character '\' should be printed
+ */
+void print_diagonal(int n)
+{
+    if (n <= 0) // If n is 0 or less, print only a newline
+    {
+        _putchar('\n'); // Print a newline character
+    }
+    else
+    {
+        int i, j;
+
+        for (i = 0; i < n; i++) // Loop to print n lines
+        {
+            for (j = 0; j < i; j++) // Loop to print spaces before '\'
+            {
+                _putchar(' '); // Print a space character
+            }
+            _putchar('\\'); // Print a '\' character for the diagonal
+            _putchar('\n'); // Move to a new line after each line
+        }
+    }
+}
+```
+
+**7-main.c:**
+```c
+#include "main.h"
+
+/**
+ * main - check the code
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_diagonal(0);
+    print_diagonal(2);
+    print_diagonal(10);
+    print_diagonal(-4);
+    return (0);
+}
+```
+
+To compile and run the code, you can use the provided compilation commands:
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 7-main.c 7-print_diagonal.c -o 7-diagonals
+./7-diagonals
+```
+
+This will produce the following output:
+```
+$
+\
+ \
+\
+ \
+  \
+   \
+    \
+     \
+$
+```
+
+The `print_diagonal` function first checks if `n` is 0 or less. If it is, the function prints just a newline character. If `n` is greater than 0, the function uses loops to print `n` lines, each with an increasing number of spaces followed by a diagonal character `\`.
+
+---
+
+TASK 8
+
+In this task, we're asked to write a function called `print_square` that takes an integer `size` as its parameter. The goal is to print a square made up of `size` rows and columns, where each cell is represented by the character `#`. If `size` is 0 or less, we should print only a newline.
+
+Let's break down the code for the `print_square` function step by step:
+
+```c
+void print_square(int size)
+{
+    if (size <= 0) // If size is 0 or less, print only a newline
+    {
+        _putchar('\n'); // Print a newline character
+    }
+    else
+    {
+        int i, j;
+
+        for (i = 0; i < size; i++) // Loop to print size rows
+        {
+            for (j = 0; j < size; j++) // Loop to print size columns
+            {
+                _putchar('#'); // Print a '#' character
+            }
+            _putchar('\n'); // Move to a new line after each row
+        }
+    }
+}
+```
+
+1. The function starts by checking if `size` is 0 or less. If it is, it means we should print just a newline character to represent an empty line.
+
+2. If `size` is greater than 0, we enter the `else` block. Here, an outer loop runs `size` times to print `size` rows of the square.
+
+3. Inside the outer loop, an inner loop also runs `size` times to print `size` columns of the square. Within this inner loop, the function prints the character `#` to represent a cell in the square.
+
+4. After printing all the cells in a row, the function moves to a new line using `_putchar('\n')`.
+
+The provided `main` function demonstrates how to use the `print_square` function with different values of `size`. When compiled and run, it prints the requested square patterns, followed by newline characters.
+
+
+**8-print_square.c:**
+```c
+#include "main.h"
+
+/**
+ * print_square - prints a square pattern in the terminal
+ * @size: the size of the square
+ */
+void print_square(int size)
+{
+    if (size <= 0) // If size is 0 or less, print only a newline
+    {
+        _putchar('\n'); // Print a newline character
+    }
+    else
+    {
+        int i, j;
+
+        for (i = 0; i < size; i++) // Loop to print 'size' number of rows
+        {
+            for (j = 0; j < size; j++) // Loop to print 'size' number of columns
+            {
+                _putchar('#'); // Print a '#' character
+            }
+            _putchar('\n'); // Move to a new line after each row
+        }
+    }
+}
+```
+
+**8-main.c:**
+```c
+#include "main.h"
+
+/**
+ * main - check the code
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_square(2);
+    print_square(10);
+    print_square(0);
+    return (0);
+}
+```
+
+To compile and run the code, you can use the provided compilation commands:
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 8-main.c 8-print_square.c -o 8-squares
+./8-squares
+```
+
+This will produce the following output:
+```
+##
+##
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+```
+
+The `print_square` function uses loops to print a square pattern of '#' characters based on the specified size. Each row consists of `size` number of '#' characters, and the function loops through to print the desired number of rows.
 
 ---
