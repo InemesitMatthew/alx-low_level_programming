@@ -422,27 +422,23 @@ Just imagine you have a robot that writes down numbers neatly in rows, and you'r
 #include "main.h"
 
 /**
- * more_numbers - prints 10 sets of numbers from 0 to 14
+ * more_numbers - prints 10 times the numbers from 0 to 14
  */
 void more_numbers(void)
 {
     int i, j;
 
-    for (i = 0; i < 10; i++) // Loop to repeat 10 times
+    for (i = 0; i < 10; i++) // Loop for printing 10 rows
     {
-        for (j = 0; j <= 14; j++) // Loop to print numbers from 0 to 14
+        for (j = 0; j <= 14; j++) // Loop for printing numbers from 0 to 14
         {
-            if (j > 9) // If the number is greater than 9, print two digits
+            if (j > 9) // If the number is two-digit, print the first digit
             {
-                _putchar('0' + j / 10); // Print the first digit
-                _putchar('0' + j % 10); // Print the second digit
+                _putchar('0' + j / 10);
             }
-            else
-            {
-                _putchar('0' + j); // Print the single digit number
-            }
+            _putchar('0' + j % 10); // Print the second digit
         }
-        _putchar('\n'); // Move to a new line after each set of numbers
+        _putchar('\n'); // Move to the next line after each row
     }
 }
 ```
