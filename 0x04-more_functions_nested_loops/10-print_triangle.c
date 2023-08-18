@@ -8,9 +8,15 @@ void print_triangle(int size)
 {
 	int row, column;
 
-	for (row = 0; row < size; row++) /*Loop for each row*/
+	if (size <= 0)
 	{
-		for (column = 0; column <= row; column++)
+		_putchar('\n');
+		return;
+	}
+
+	for (row = 1; row <= size; row++) /*Loop for each row*/
+	{
+		for (column = 1; column <= row; column++)
 		{
 			_putchar('#');/*Print '#' for each column in the row*/
 		}
