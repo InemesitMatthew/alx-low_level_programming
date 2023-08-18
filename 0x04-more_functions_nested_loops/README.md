@@ -816,3 +816,295 @@ This will produce the following output:
 The `print_square` function uses loops to print a square pattern of '#' characters based on the specified size. Each row consists of `size` number of '#' characters, and the function loops through to print the desired number of rows.
 
 ---
+
+# Task 9: Fizz-Buzz
+
+The Fizz-Buzz test is a simple programming challenge used to evaluate a candidate's basic programming skills. In this task, we'll write a program that prints numbers from 1 to 100, replacing multiples of 3 with "Fizz," multiples of 5 with "Buzz," and multiples of both 3 and 5 with "FizzBuzz."
+
+## Compilation and Usage
+
+Compile the program using the following command:
+
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 9-fizz_buzz.c -o 9-fizz_buzz
+```
+
+To run the program, use:
+
+```sh
+./9-fizz_buzz
+```
+
+## Output
+
+The program will print the numbers from 1 to 100, each followed by a space. For multiples of 3, it will print "Fizz." For multiples of 5, it will print "Buzz." For numbers that are multiples of both 3 and 5, it will print "FizzBuzz."
+
+## Example Output
+
+```
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ... 97 98 Fizz Buzz
+```
+
+## Constraints
+
+- You are allowed to use the standard library.
+- The program should adhere to the rules of Fizz-Buzz as described above.
+
+
+```c
+#include <stdio.h>
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+    int i;
+
+    for (i = 1; i <= 100; i++)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+            printf("FizzBuzz ");
+        else if (i % 3 == 0)
+            printf("Fizz ");
+        else if (i % 5 == 0)
+            printf("Buzz ");
+        else
+            printf("%d ", i);
+    }
+
+    printf("\n");
+    return (0);
+}
+```
+
+This program uses a loop to iterate through numbers from 1 to 100. Depending on the divisibility of the current number, it prints "Fizz," "Buzz," "FizzBuzz," or the number itself, following the rules mentioned in the task description.
+
+---
+
+**Task 10: Triangles**
+
+Hey there! Imagine you have a magical function that can draw different shapes using characters. In this task, we're going to create a function that can draw a special shape called a triangle. A triangle is like a mountain made of characters.
+
+We'll use a special character called "#" to draw our triangle. The size of the triangle will determine how big or small it is. If we tell the function to make a triangle with a size of 3, it will look like this:
+
+```
+  #
+ ##
+###
+```
+
+And if we tell it to make a triangle with a size of 5, it will look like this:
+
+```
+    #
+   ##
+  ###
+ ####
+#####
+```
+
+Now, let's see how we can make our computer do this!
+
+**Code Explanation:**
+
+In this program, we're creating a function called `print_triangle` that will draw a triangle using the `_putchar` function.
+
+Here's how the code works:
+
+```c
+void print_triangle(int size)
+{
+    int row, column;
+
+    for (row = 0; row < size; row++) {     // Loop for each row
+        for (column = 0; column <= row; column++) {
+            _putchar('#');                 // Print '#' for each column in the row
+        }
+        _putchar('\n');                    // Move to the next line after each row
+    }
+}
+```
+
+1. We have a function called `print_triangle` that takes a number called `size` as input. This number will determine the size of the triangle.
+2. Inside the function, we have two loops. The first loop (`row` loop) runs from 0 to `size - 1`, creating each row of the triangle.
+3. Inside the `row` loop, we have another loop (`column` loop) that runs from 0 to the current `row` value. This loop prints the "#" character for each column in the current row.
+4. After printing all the characters in a row, we use `_putchar('\n')` to move to the next line and start the next row.
+
+This way, when we call the `print_triangle` function with different sizes, it will create triangles of different heights, all made up of "#" characters.
+
+Remember, this magical function (`_putchar`) helps us print characters one by one, and by using loops, we can create cool shapes like this triangle!
+
+
+**10-print_triangle.c:**
+```c
+#include "main.h"
+
+/**
+ * print_triangle - prints a triangle using '#' characters
+ * @size: the size of the triangle
+ */
+void print_triangle(int size)
+{
+    int row, column;
+
+    for (row = 0; row < size; row++) {     // Loop for each row
+        for (column = 0; column <= row; column++) {
+            _putchar('#');                 // Print '#' for each column in the row
+        }
+        _putchar('\n');                    // Move to the next line after each row
+    }
+}
+```
+
+**10-main.c:**
+```c
+#include "main.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_triangle(2);
+    print_triangle(10);
+    print_triangle(1);
+    print_triangle(0);
+    return (0);
+}
+```
+
+To compile and run the code, you can use the provided compilation commands:
+```sh
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 10-main.c 10-print_triangle.c -o 10-triangles
+./10-triangles
+```
+
+This will produce the following output:
+```
+ #
+##
+         #
+        ##
+       ###
+      ####
+     #####
+    ######
+   #######
+  ########
+ #########
+##########
+#
+```
+
+The `print_triangle` function uses two loops to print the "#" character in a pattern that creates a triangle. The outer loop controls the number of rows, and the inner loop controls the number of "#" characters printed in each row.
+
+
+---
+
+**Task 11: Prime Numbers**
+
+Explanation:
+The problem is to find the largest prime factor of a given number, which is a common mathematical task. A prime factor is a prime number that can divide the given number evenly without leaving a remainder. In this case, you need to find the largest prime factor of the number 612852475143.
+
+Code:
+```c
+#include <stdio.h>
+#include <math.h>
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+    long int num = 612852475143;
+    long int divisor = 2;
+
+    while (num > 1)
+    {
+        if (num % divisor == 0)
+        {
+            num = num / divisor;
+        }
+        else
+        {
+            divisor++;
+        }
+    }
+
+    printf("%ld\n", divisor);
+
+    return (0);
+}
+```
+
+This code uses a simple loop to find the prime factorization of the given number. It starts with a divisor of 2 and repeatedly divides the number by the divisor if it's a factor. When the loop ends, the variable `divisor` holds the largest prime factor of the original number.
+
+Compile and run the code with the provided compilation command:
+```
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 100-prime_factor.c -o 100-prime_factor -lm
+./100-prime_factor
+```
+
+The output will be the largest prime factor of the number 612852475143.
+
+---
+
+#Task 12::Numbers have life; they're not just symbols on paper
+
+**Explanation:**
+This task requires creating a function that can print an integer to the standard output using only the `_putchar` function, which is the only allowed printing function. The challenge lies in converting the integer into individual digits and printing each digit separately.
+
+**Code:**
+```c
+#include "main.h"
+
+/**
+ * print_number - prints an integer
+ * @n: the integer to be printed
+ */
+void print_number(int n)
+{
+    if (n < 0)
+    {
+        _putchar('-');
+        n = -n;
+    }
+
+    if (n / 10 != 0)
+    {
+        print_number(n / 10);
+    }
+
+    _putchar((n % 10) + '0');
+}
+```
+
+**Running the Code:**
+Compile and run the code using the given compilation command:
+```
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 101-main.c 101-print_number.c -o 101-print_numbers
+./101-print_numbers
+```
+
+The output will be:
+```
+98
+402
+1024
+0
+-98
+```
+
+**Explanation of the Code:**
+1. The `print_number` function first checks if the given integer `n` is negative. If it is, it prints a negative sign and makes `n` positive for further processing.
+2. The function then checks if the absolute value of `n` is greater than or equal to 10. If it is, it calls itself recursively with `n / 10` to print the remaining digits.
+3. After printing all the higher-order digits, the function uses the `_putchar` function to print the last digit of `n`, obtained as `(n % 10) + '0'`.
+
+This approach breaks down the integer into individual digits and prints them one by one, effectively achieving the task's goal.
