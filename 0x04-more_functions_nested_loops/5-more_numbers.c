@@ -14,11 +14,10 @@ void more_numbers(void)
 			if (j > 9)/*if the number is two-digit, print the first digit*/
 			{
 				_putchar('0' + j / 10);/*print the first digit*/
-				_putchar('0' + j % 10);/*print the second digit*/
 			}
 			else
 			{
-				_putchar('0' + j);/*Print the single digit number*/
+				_putchar('0' + j % 10);/*Print the second digit*/
 			}
 		}
 		_putchar('\n');/*Move to a new line after each set of numbers*/
