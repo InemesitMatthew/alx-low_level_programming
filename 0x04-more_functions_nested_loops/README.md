@@ -701,8 +701,7 @@ $
 The `print_diagonal` function first checks if `n` is 0 or less. If it is, the function prints just a newline character. If `n` is greater than 0, the function uses loops to print `n` lines, each with an increasing number of spaces followed by a diagonal character `\`.
 
 ---
-
-TASK 8
+**Task 8: You are so much sunshine in every square inch**
 
 In this task, we're asked to write a function called `print_square` that takes an integer `size` as its parameter. The goal is to print a square made up of `size` rows and columns, where each cell is represented by the character `#`. If `size` is 0 or less, we should print only a newline.
 
