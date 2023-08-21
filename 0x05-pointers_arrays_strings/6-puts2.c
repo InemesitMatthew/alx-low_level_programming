@@ -7,13 +7,29 @@
  */
 void puts2(char *str)
 {
+	int l = 0;
 	int i = 0;
+	char *y = str;
+	int j;
 
-	while (str[i] != '\0')
+	/*Calculate the length of the string*/
+	for (; *y != '\0'; y++)
 	{
-		_putchar(str[i]);
-		i += 2;/* Increment by 2 to skip every other character*/
+		l++;
 	}
 
+	/*Calculate the index of the last character*/
+	i = l - 1;
+
+	/*Iterate through the string and print every other character*/
+	for (j = 0; j <= i; j++)
+	{
+		if (j % 2 == 0)
+		{
+			_putchar(str[j]);
+		}
+	}
+
+	/*Print a newline character to seperate the output*/
 	_putchar('\n');
 }
