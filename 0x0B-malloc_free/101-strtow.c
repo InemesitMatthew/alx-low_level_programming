@@ -1,126 +1,101 @@
-#include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-/**
- * count_words - Count the number of words in a string.
- * @str: The input string.
- *
- * Return: Number of words.
- */
+int is_space(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n');
+}
+
 int count_words(char *str)
 {
-	int count = 0;
-	int in_word = 0;  /* Flag to track if we're in a word */
+	int count = 0, in_word = 0;
 
 	while (*str)
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
+		if (is_space(*str))
 		{
-			in_word = 0;  /* We're not in a word anymore */
+			if (in_word)
+			{
+				in_word = 0;
+				count++;
+			}
 		}
-		else if (in_word == 0)
+		else
 		{
-			in_word = 1;  /* We're in a new word */
-			count++;      /* Increment the word count */
+			in_word = 1;
 		}
 		str++;
 	}
+
+	if (in_word)
+		count++;
 
 	return (count);
 }
 
-/**
- * strtow - Split a string into words.
- * @str: The input string.
- *
- * Return: Pointer to an array of strings (words)
- * or NULL if str is NULL or empty.
- */
+char *duplicate_word(char *str)
+{
+	int len = 0;
+	char *word;
+
+	while (str[len] && !is_space(str[len]))
+		len++;
+
+	word = malloc(len + 1);
+
+	if (!word)
+		return (NULL);
+
+	for (int i = 0; i < len; i++)
+		word[i] = str[i];
+
+	word[len] = '\0';
+
+	return (word);
+}
+
 char **strtow(char *str)
 {
-	if (str == NULL || *str == '\0')
+	int word_count;
+	char **words, *word;
+	char *str_copy = str;
+
+	if (!str || !*str)
 		return (NULL);
 
-	int num_words = count_words(str);
+	word_count = count_words(str);
 
-	if (num_words == 0)
+	if (word_count == 0)
 		return (NULL);
 
-	char **word_array = malloc((num_words + 1) * sizeof(char *));
+	words = malloc(sizeof(char *) * (word_count + 1));
 
-	if (word_array == NULL)
+	if (!words)
 		return (NULL);
 
-	int i = 0;
-	int word_len = 0;
-
-	while (*str)
+	int i;
+	for (i = 0; i < word_count; i++)
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
-		{
-			if (word_len > 0)
-			{
-				word_array[i] = malloc((word_len + 1) * sizeof(char));
-				if (word_array[i] == NULL)
-				{
-					for (int j = 0; j < i; j++)
-						free(word_array[j]);
-					free(word_array);
-					return (NULL);
-				}
-				i++;
-				word_len = 0;
-			}
-		}
-		else
-		{
-			word_len++;
-		}
-		str++;
-	}
+		while (*str_copy && is_space(*str_copy))
+			str_copy++;
 
-	if (word_len > 0)
-	{
-		word_array[i] = malloc((word_len + 1) * sizeof(char));
-		if (word_array[i] == NULL)
+		word = duplicate_word(str_copy);
+
+		if (!word)
 		{
-			for (int j = 0; j <= i; j++)
-				free(word_array[j]);
-			free(word_array);
+			for (int j = 0; j < i; j++)
+				free(words[j]);
+
+			free(words);
 			return (NULL);
 		}
+
+		words[i] = word;
+
+		while (*str_copy && !is_space(*str_copy))
+			str_copy++;
 	}
 
-	/* Reset str pointer to the beginning of the input string */
-	str -= word_len;
-	i = 0;
+	words[word_count] = NULL;
 
-	while (*str)
-	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
-		{
-			if (word_len > 0)
-			{
-				word_array[i][word_len] = '\0';  /* Null-terminate the word */
-				i++;
-				word_len = 0;
-			}
-		}
-		else
-		{
-			word_array[i][word_len] = *str;
-			word_len++;
-		}
-		str++;
-	}
-
-	if (word_len > 0)
-	{
-		word_array[i][word_len] = '\0';  /* Null-terminate the last word */
-	}
-
-	word_array[i + 1] = NULL;  /* Null-terminate the array of words */
-
-	return (word_array);
+	return (words);
 }
