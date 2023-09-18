@@ -9,21 +9,25 @@
  *
  * Return: A newly allocated string containing the word.
  */
-char *duplicate_word(char *str, int start, int end)
-{
-	int len = end - start + 1;
-	char *word = malloc(len + 1);
+char *duplicate_word(char *word, int len) {
+	int i;
+	char *new_word;
 
 	if (word == NULL)
 		return (NULL);
 
-	for (int i = 0; i < len; i++)
-		word[i] = str[start + i];
-	word[len] = '\0';
+	new_word = malloc((len + 1) * sizeof(char));
 
-	return (word);
+	if (new_word == NULL)
+		return (NULL);
+
+	for (i = 0; i < len; i++) {
+		new_word[i] = word[i];
+	}
+
+	new_word[i] = '\0';
+	return (new_word);
 }
-
 /**
  * strtow - Splits a string into words.
  * @str: The input string.
