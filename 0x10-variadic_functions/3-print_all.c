@@ -11,7 +11,7 @@ void print_all(const char * const format, ...)
 	char *separator = "";
 	int i = 0;
 
-	va_start (args, format);
+	va_start(args, format);
 
 	while (format && format[i])
 	{
@@ -24,6 +24,7 @@ void print_all(const char * const format, ...)
 		if (format[i] == 's')
 		{
 			char *str = va_arg(args, char *);
+
 			if (str == NULL)
 				str = "(nil)";
 			printf("%s%s", separator, str);
